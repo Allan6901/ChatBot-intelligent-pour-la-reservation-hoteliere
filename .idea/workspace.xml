@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a11429fb-0327-452f-82fe-b87edbea8587" name="Changes" comment="Setup Django">
-      <change afterPath="$PROJECT_DIR$/hotels/App/templates/App/myfirst.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/ChatBot-intelligent-pour-la-reservation-hoteliere.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotels/App/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/hotels/App/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotels/projet/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/hotels/projet/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotels/projet/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/hotels/projet/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotels/App/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/hotels/App/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +71,6 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/hotels/App/templates/App" />
       <recent name="$PROJECT_DIR$/hotels" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -115,8 +117,7 @@
       <option name="presentableId" value="Default" />
       <updated>1760617491773</updated>
       <workItem from="1760617493199" duration="2519000" />
-      <workItem from="1760620034664" duration="1196000" />
-      <workItem from="1760621244440" duration="353000" />
+      <workItem from="1760620034664" duration="299000" />
     </task>
     <task id="LOCAL-00001" summary="Premier commit">
       <option name="closed" value="true" />
@@ -134,15 +135,7 @@
       <option name="project" value="LOCAL" />
       <updated>1760618806604</updated>
     </task>
-    <task id="LOCAL-00003" summary="Setup Django">
-      <option name="closed" value="true" />
-      <created>1760620365621</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1760620365621</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
