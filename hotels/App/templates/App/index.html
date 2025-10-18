@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réservation d’Hôtels – Accueil</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Animation pour le popup */
+    @keyframes slideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Barre de navigation -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-600">HotelEase</h1>
+      <nav class="space-x-6">
+        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Accueil</a>
+        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Hôtels</a>
+        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">À propos</a>
+        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Section Hero -->
+  <section class="bg-[url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center h-[80vh] flex items-center justify-center relative">
+    <div class="bg-black bg-opacity-50 absolute inset-0"></div>
+    <div class="relative z-10 text-center text-white">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Trouvez l’hôtel parfait pour votre séjour</h2>
+      <p class="text-lg mb-8">Comparez les meilleurs établissements et réservez en toute simplicité</p>
+      <a href="#" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg text-white font-semibold">Explorer les hôtels</a>
+    </div>
+  </section>
+
+  <!-- Formulaire de recherche -->
+  <section class="bg-white shadow-md rounded-2xl max-w-4xl mx-auto -mt-16 relative z-20 p-6">
+    <form class="grid md:grid-cols-4 gap-4">
+      <div>
+        <label class="block text-sm font-semibold mb-1">Destination</label>
+        <input type="text" placeholder="Ville ou hôtel" class="w-full border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+      </div>
+      <div>
+        <label class="block text-sm font-semibold mb-1">Arrivée</label>
+        <input type="date" class="w-full border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+      </div>
+      <div>
+        <label class="block text-sm font-semibold mb-1">Départ</label>
+        <input type="date" class="w-full border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+      </div>
+      <div class="flex items-end">
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg">Rechercher</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Liste d’hôtels en vedette -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">Hôtels en vedette</h3>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Hôtel" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Hôtel Le Rivage</h4>
+          <p class="text-gray-600 text-sm">Nice, France</p>
+          <p class="text-blue-600 font-bold mt-2">À partir de 120 € / nuit</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1590490360182-663334b09e5c?auto=format&fit=crop&w=800&q=80" alt="Hôtel" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">MontBlanc Suites</h4>
+          <p class="text-gray-600 text-sm">Chamonix, France</p>
+          <p class="text-blue-600 font-bold mt-2">À partir de 180 € / nuit</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80" alt="Hôtel" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Grand Hôtel de Paris</h4>
+          <p class="text-gray-600 text-sm">Paris, France</p>
+          <p class="text-blue-600 font-bold mt-2">À partir de 250 € / nuit</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pied de page -->
+  <footer class="bg-gray-900 text-gray-300 py-10">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+      <div>
+        <h5 class="font-bold text-white mb-3">HotelEase</h5>
+        <p class="text-sm">Votre partenaire de confiance pour trouver et réserver les meilleurs hôtels en France.</p>
+      </div>
+      <div>
+        <h5 class="font-bold text-white mb-3">Liens utiles</h5>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-white">Nos hôtels</a></li>
+          <li><a href="#" class="hover:text-white">À propos</a></li>
+          <li><a href="#" class="hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-bold text-white mb-3">Suivez-nous</h5>
+        <div class="flex space-x-4 text-lg">
+          <a href="#" class="hover:text-white">🌐</a>
+          <a href="#" class="hover:text-white">🐦</a>
+          <a href="#" class="hover:text-white">📘</a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-sm text-gray-500 mt-8">© 2025 HotelEase. Tous droits réservés.</div>
+  </footer>
+
+  <!-- 🤖 Bouton du chatbot -->
+  <button id="chatbot-btn" class="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg text-3xl z-50">
+    💬
+  </button>
+
+  <!-- Fenêtre du chatbot -->
+  <div id="chatbot-popup" class="hidden fixed bottom-24 right-6 bg-white shadow-2xl rounded-2xl w-80 h-96 flex flex-col overflow-hidden animate-slideUp z-50">
+    <div class="bg-blue-600 text-white p-3 flex justify-between items-center">
+      <span class="font-semibold">Assistant HotelEase</span>
+      <button id="close-chat" class="text-white hover:text-gray-200 text-xl">&times;</button>
+    </div>
+    <div id="chat-body" class="flex-1 p-3 overflow-y-auto text-sm space-y-2">
+      <div class="bg-gray-100 p-2 rounded-lg w-3/4">👋 Bonjour ! Je suis votre assistant. Comment puis-je vous aider ?</div>
+    </div>
+    <form id="chat-form" class="p-3 border-t flex gap-2">
+      <input id="chat-input" type="text" placeholder="Écrivez votre message..." class="flex-1 border rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+      <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-sm">Envoyer</button>
+    </form>
+  </div>
+
+  <!-- Script du chatbot -->
+  <script>
+    const btn = document.getElementById('chatbot-btn');
+    const popup = document.getElementById('chatbot-popup');
+    const close = document.getElementById('close-chat');
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('chat-input');
+    const body = document.getElementById('chat-body');
+
+    btn.onclick = () => popup.classList.toggle('hidden');
+    close.onclick = () => popup.classList.add('hidden');
+
+    form.onsubmit = (e) => {
+      e.preventDefault();
+      const text = input.value.trim();
+      if (!text) return;
+      const userMsg = document.createElement('div');
+      userMsg.className = 'bg-blue-100 p-2 rounded-lg w-3/4 ml-auto';
+      userMsg.textContent = text;
+      body.appendChild(userMsg);
+
+      // Simuler une réponse automatique
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'bg-gray-100 p-2 rounded-lg w-3/4';
+        botMsg.textContent = "Merci ! Je cherche des infos à ce sujet...";
+        body.appendChild(botMsg);
+        body.scrollTop = body.scrollHeight;
+      }, 800);
+
+      input.value = '';
+      body.scrollTop = body.scrollHeight;
+    };
+  </script>
+
+</body>
+</html>
