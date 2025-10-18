@@ -7,6 +7,9 @@ class Hotel(models.Model):
     ville_ho = models.CharField(max_length=100)
     nb_etoiles_ho = models.IntegerField()
 
+    class Meta:
+        db_table = 'Hotel'
+
     def __str__(self):
         return self.nom_ho
 
@@ -16,6 +19,8 @@ class TypeChambre(models.Model):
     nom_ty = models.CharField(max_length=100)
     prix_ty = models.DecimalField(max_digits=10, decimal_places=2)
 
+    class Meta:
+        db_table = 'TypeChambre'
     def __str__(self):
         return self.nom_ty
 
@@ -26,6 +31,7 @@ class Chambre(models.Model):
     num_ty = models.ForeignKey(TypeChambre, on_delete=models.CASCADE)
 
     class Meta:
+        db_table = 'Chambre'
         unique_together = (('num_ch', 'num_ho'),)
 
     def __str__(self):
@@ -38,6 +44,9 @@ class Client(models.Model):
     prenom_cl = models.CharField(max_length=100)
     rue_adr_cl = models.CharField(max_length=100)
     ville_cl = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = 'Client'
 
     def __str__(self):
         return f"{self.prenom_cl} {self.nom_cl}"
@@ -52,6 +61,7 @@ class Reservation(models.Model):
     nb_chambres = models.IntegerField()
 
     class Meta:
+        db_table = 'Reservation'
         unique_together = (('num_cl', 'num_ho', 'num_ty', 'date_a'),)
 
     def __str__(self):
@@ -66,6 +76,7 @@ class Occupation(models.Model):
     date_d = models.DateTimeField()
 
     class Meta:
+        db_table = 'Occupation'
         unique_together = (('num_cl', 'num_ho', 'num_ch', 'date_a'),)
 
     def __str__(self):
