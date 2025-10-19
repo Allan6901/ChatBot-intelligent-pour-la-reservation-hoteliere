@@ -147,6 +147,36 @@
         addMessage(simulateResponse(text));
       }, 1000);
     };
+
+    async function sendMessage() {
+            const messageInput = document.getElementById("message");
+            const message = messageInput.value;
+
+            const formData = new FormData();
+            formData.append("message", message);
+
+            const response = await fetch("/chat/", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await response.json();
+            const chatBox = document.getElementById("chat-box");
+
+            if (data.responses) {
+                data.responses.forEach(msg => {
+                    const p = document.createElement("p");
+                    p.textContent = "Rasa: " + msg;
+                    chatBox.appendChild(p);
+                });
+            } else if (data.error) {
+                const p = document.createElement("p");
+                p.textContent = "Erreur: " + data.error;
+                chatBox.appendChild(p);
+            }
+
+            messageInput.value = "";
+        }
   </script>
 
 </body>

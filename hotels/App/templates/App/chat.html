@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat avec Rasa</title>
+    <style>
+        #chat-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 400px;
+            height: 300px;
+            overflow-y: scroll;
+            margin-bottom: 10px;
+        }
+        #message-input {
+            width: 400px;
+            padding: 5px;
+        }
+        .user-msg { color: blue; }
+        .bot-msg { color: green; }
+    </style>
+</head>
+<body>
+    <h2>Chat avec Rasa</h2>
+    <div id="chat-box"></div>
+    <input type="text" id="message-input" placeholder="Tapez votre message et appuyez sur Entrée">
+
+    <script>
+        const chatBox = document.getElementById('chat-box');
+        const input = document.getElementById('message-input');
+
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const message = input.value.trim();
+                if (!message) return;
+
+                chatBox.innerHTML += `<div class="user-msg"><strong>Vous:</strong> ${message}</div>`;
+                input.value = '';
+
+                fetch('/chat/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({ 'message': message })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.responses) {
+                        data.responses.forEach(msg => {
+                            chatBox.innerHTML += `<div class="bot-msg"><strong>Bot:</strong> ${msg}</div>`;
+                        });
+                    } else if (data.error) {
+                        chatBox.innerHTML += `<div class="bot-msg"><strong>Erreur:</strong> ${data.error}</div>`;
+                    }
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+c

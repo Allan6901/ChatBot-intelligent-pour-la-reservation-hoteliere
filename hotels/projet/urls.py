@@ -21,4 +21,6 @@ from App import views as app_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', app_views.home, name='home'),
+    path('chat-page/', app_views.chat_page, name='chat_page'),  # Nouvelle page
+    path('chat/', app_views.chat_with_rasa, name='chat_with_rasa'),
 ]
