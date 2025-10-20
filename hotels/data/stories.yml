@@ -2,29 +2,25 @@ version: "3.1"
 
 stories:
 
-- story: happy path
+- story: Recherche hôtel avec ville
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - intent: rechercher_hotel
+    entities:
+    - ville: "Paris"
+  - action: action_rechercher_hotel
 
-- story: sad path 1
+- story: Recherche hôtel avec Nice
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+  - intent: rechercher_hotel
+    entities:
+    - ville: "Nice"
+  - action: action_rechercher_hotel
 
-- story: sad path 2
+- story: Demander ville puis répondre
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+  - intent: rechercher_hotel
+  - action: utter_demander_ville
+  - intent: rechercher_hotel
+    entities:
+    - ville: "Nice"
+  - action: action_rechercher_hotel

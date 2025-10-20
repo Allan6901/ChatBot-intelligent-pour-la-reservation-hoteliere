@@ -11,3 +11,15 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Recherche d'hôtel avec ville détectée
+  steps:
+  - intent: rechercher_hotel
+    entities:
+    - ville
+  - action: action_rechercher_hotel
+
+- rule: Demander la ville si manquante
+  steps:
+  - intent: rechercher_hotel
+  - action: utter_demander_ville

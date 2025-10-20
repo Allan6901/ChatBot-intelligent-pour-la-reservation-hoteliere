@@ -89,3 +89,29 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+
+- intent: rechercher_hotel
+  examples: |
+    - Quels hôtels puis-je réserver à [Paris](ville) ?
+    - Je cherche une chambre à [Lyon](ville)
+    - Montre-moi les hôtels avec un prix moyen de [100](prix) euros
+    - Je veux réserver un hôtel à [Marseille](ville) pour 2 personnes
+    - Hôtels à [Nice](ville)
+    - Je veux réserver une chambre à [Toulouse](ville)
+    - Cherche un hôtel à [Bordeaux](ville)
+    - Je veux un hôtel à [Lille](ville)
+    - Montre-moi les hôtels à [Paris](ville)
+    - Hôtel à [Nice](ville)
+    - Je cherche un hotel à [Nice](ville)
+    - Y a t-il des hôtels à [Nice](ville) ?
+
+- lookup: ville
+  examples: |
+    - Paris
+    - Lyon
+    - Marseille
+    - Nice
+    - Toulouse
+    - Bordeaux
+    - Lillele
