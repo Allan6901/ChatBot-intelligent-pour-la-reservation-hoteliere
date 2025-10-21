@@ -6,90 +6,16 @@ nlu:
     - hey
     - hello
     - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+    - bonjour
+    - salut
 
 - intent: goodbye
   examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
     - bye
     - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
-
-- intent: affirm
-  examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
-
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
-
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
-
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
-
+    - au revoir
+    - à plus
+    - ciao
 
 - intent: rechercher_hotel
   examples: |
@@ -98,13 +24,63 @@ nlu:
     - Montre-moi les hôtels avec un prix moyen de [100](prix) euros
     - Je veux réserver un hôtel à [Marseille](ville) pour 2 personnes
     - Hôtels à [Nice](ville)
+    - Hôtel à [Nice](ville)
     - Je veux réserver une chambre à [Toulouse](ville)
     - Cherche un hôtel à [Bordeaux](ville)
     - Je veux un hôtel à [Lille](ville)
     - Montre-moi les hôtels à [Paris](ville)
-    - Hôtel à [Nice](ville)
     - Je cherche un hotel à [Nice](ville)
     - Y a t-il des hôtels à [Nice](ville) ?
+    - Donne moi les hôtels de [Nice](ville)
+    - Liste des hôtels à [Nice](ville)
+    - Hôtel dans la ville de [Nice](ville)
+    - Je veux un hôtel sur [Nice](ville)
+    - Je recherche un hébergement à [Lyon](ville)
+    - Quels sont les hôtels disponibles à [Marseille](ville) ?
+
+- intent: demander_prix
+  examples: |
+    - Hôtels pas chers
+    - Hôtels pas cher
+    - Hôtel pas chers
+    - Hôtel pas cher
+    - Hôtels économiques
+    - Hôtel économique
+    - Je cherche un hôtel pas cher
+    - Je veux un hôtel pas cher
+    - Hôtel bon marché
+    - Hôtels bon marché
+    - Hôtels à petit prix
+    - Hôtel à petit prix
+    - Hôtels low cost
+    - Hôtel low cost
+    - Hôtels à bas prix
+    - Hôtel à bas prix
+    - Hôtels à prix réduit
+    - Hôtel à prix réduit
+    - Hôtels avec bon rapport qualité-prix
+    - Hôtel avec bon rapport qualité-prix
+    - Quel est le prix moyen ?
+    - Quels sont les hôtels les moins chers ?
+    - Hôtels les moins chers
+    - Hôtel le moins cher
+    - Hôtels à moindre coût
+    - Hôtel à moindre coût
+    - Hôtels à tarif réduit
+    - Hôtel à tarif réduit
+    - Hôtels avec des prix abordables
+    - Hôtel avec des prix abordables
+    
+
+- intent: demander_capacite
+  examples: |
+    - Hôtel pour [2](personnes) personnes
+    - Chambre pour [4](personnes) personnes
+    - Je voyage avec [3](personnes) amis
+    - Hôtel pour [une](personnes) personne
+    - Pour [deux](personnes) personnes
+    - Nous sommes [5](personnes)
+    - Chambre familiale pour [4](personnes) personnes
 
 - lookup: ville
   examples: |
@@ -114,4 +90,30 @@ nlu:
     - Nice
     - Toulouse
     - Bordeaux
-    - Lillele
+    - Lille
+
+- lookup: personnes
+  examples: |
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - une
+    - deux
+    - trois
+    - quatre
+    - cinq
+
+- intent: inform
+  examples: |
+    - [Paris](ville)
+    - [Lyon](ville)
+    - [Nice](ville)
+    - [Marseille](ville)
+    - [100](prix) euros
+    - [80](prix)
+    - [150](prix) €
+    - [2](personnes) personnes
+    - pour [4](personnes)
+    - [3](personnes)

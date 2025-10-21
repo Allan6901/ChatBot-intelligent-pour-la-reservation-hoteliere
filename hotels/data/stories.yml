@@ -2,24 +2,60 @@ version: "3.1"
 
 stories:
 
-- story: Recherche hôtel avec ville
+- story: Recherche par ville seule
   steps:
   - intent: rechercher_hotel
     entities:
     - ville: "Paris"
   - action: action_rechercher_hotel
 
-- story: Recherche hôtel avec Nice
+- story: Recherche par prix avec budget spécifique
+  steps:
+  - intent: demander_prix
+    entities:
+    - prix: "100"
+  - action: action_rechercher_par_prix
+
+- story: Recherche par prix sans budget (hôtels pas chers)
+  steps:
+  - intent: demander_prix
+  - action: action_rechercher_par_prix
+
+- story: Recherche par capacité seule
+  steps:
+  - intent: demander_capacite
+    entities:
+    - personnes: "2"
+  - action: action_rechercher_par_capacite
+
+- story: Recherche combinée ville et prix
   steps:
   - intent: rechercher_hotel
+    entities:
+    - ville: "Lyon"
+    - prix: "120"
+  - action: action_rechercher_hotel
+
+- story: Demander ville manquante
+  steps:
+  - intent: rechercher_hotel
+  - action: utter_demander_ville
+  - intent: inform
     entities:
     - ville: "Nice"
   - action: action_rechercher_hotel
 
-- story: Demander ville puis répondre
+- story: Demander prix manquant
   steps:
-  - intent: rechercher_hotel
-  - action: utter_demander_ville
+  - intent: demander_prix
+  - action: utter_demander_prix
+  - intent: inform
+    entities:
+    - prix: "80"
+  - action: action_rechercher_par_prix
+
+- story: Recherche avec Nice
+  steps:
   - intent: rechercher_hotel
     entities:
     - ville: "Nice"

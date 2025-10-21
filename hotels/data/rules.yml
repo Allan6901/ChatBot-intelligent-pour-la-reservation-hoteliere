@@ -19,7 +19,16 @@ rules:
     - ville
   - action: action_rechercher_hotel
 
-- rule: Demander la ville si manquante
+- rule: Recherche par prix avec entité
   steps:
-  - intent: rechercher_hotel
-  - action: utter_demander_ville
+  - intent: demander_prix
+    entities:
+    - prix
+  - action: action_rechercher_par_prix
+
+- rule: Recherche par capacité avec entité
+  steps:
+  - intent: demander_capacite
+    entities:
+    - personnes
+  - action: action_rechercher_par_capacite

@@ -9,10 +9,14 @@ intents:
   - mood_unhappy
   - bot_challenge
   - rechercher_hotel
+  - demander_prix
+  - demander_capacite
+  - inform
 
 entities:
   - ville
   - prix
+  - personnes
 
 slots:
   ville:
@@ -21,28 +25,40 @@ slots:
     - type: from_entity
       entity: ville
   prix:
-    type: text
+    type: float
     mappings:
     - type: from_entity
       entity: prix
+  personnes:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: personnes
 
 responses:
   utter_greet:
-  - text: "Bonjour ! Comment puis-je vous aider ?"
+  - text: "Bonjour ! Comment puis-je vous aider pour votre recherche d'hôtel ?"
 
   utter_goodbye:
-  - text: "Au revoir !"
+  - text: "Au revoir ! Bon séjour !"
 
   utter_iamabot:
-  - text: "Je suis un bot, propulsé par Rasa."
+  - text: "Je suis un assistant virtuel spécialisé dans la recherche d'hôtels."
 
   utter_demander_ville:
   - text: "Dans quelle ville souhaitez-vous rechercher un hôtel ?"
 
+  utter_demander_prix:
+  - text: "Quel est votre budget maximum par nuit ?"
+
+  utter_demander_personnes:
+  - text: "Pour combien de personnes souhaitez-vous réserver ?"
+
+  utter_help:
+  - text: "Je peux vous aider à trouver des hôtels par ville, par prix, ou pour un nombre spécifique de personnes. Dites-moi simplement ce que vous cherchez !"
+
 actions:
   - action_rechercher_hotel
   - action_demander_ville
-
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  - action_rechercher_par_prix
+  - action_rechercher_par_capacite
