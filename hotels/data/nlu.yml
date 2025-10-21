@@ -37,7 +37,6 @@ nlu:
     - Je veux un hôtel sur [Nice](ville)
     - Je recherche un hébergement à [Lyon](ville)
     - Quels sont les hôtels disponibles à [Marseille](ville) ?
-
 - intent: demander_prix
   examples: |
     - Hôtels pas chers
@@ -81,6 +80,19 @@ nlu:
     - Pour [deux](personnes) personnes
     - Nous sommes [5](personnes)
     - Chambre familiale pour [4](personnes) personnes
+    - Je cherche un hôtel pour [1](personnes) personne
+    - Hôtel pour [un](personnes) voyageur
+    - Pour [une](personnes) personne
+    - Chambre [simple](personnes)
+    - Chambre [double](personnes)
+    - Chambre [triple](personnes)
+    - Chambre [familiale](personnes)
+    - Je voyage [seul](personnes)
+    - Nous voyageons en [couple](personnes)
+    - Nous sommes un [groupe](personnes) de 4
+    - Hébergement pour [3](personnes) adultes
+    - Chambre pour [2](personnes) adultes et 2 enfants
+    - Je veux réserver pour [4](personnes)
 
 - lookup: ville
   examples: |

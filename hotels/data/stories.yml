@@ -9,19 +9,19 @@ stories:
     - ville: "Paris"
   - action: action_rechercher_hotel
 
-- story: Recherche par prix avec budget spécifique
+- story: Recherche par prix avec budget
   steps:
   - intent: demander_prix
     entities:
     - prix: "100"
   - action: action_rechercher_par_prix
 
-- story: Recherche par prix sans budget (hôtels pas chers)
+- story: Recherche par prix sans budget
   steps:
   - intent: demander_prix
   - action: action_rechercher_par_prix
 
-- story: Recherche par capacité seule
+- story: Recherche par capacité
   steps:
   - intent: demander_capacite
     entities:
@@ -44,15 +44,6 @@ stories:
     entities:
     - ville: "Nice"
   - action: action_rechercher_hotel
-
-- story: Demander prix manquant
-  steps:
-  - intent: demander_prix
-  - action: utter_demander_prix
-  - intent: inform
-    entities:
-    - prix: "80"
-  - action: action_rechercher_par_prix
 
 - story: Recherche avec Nice
   steps:

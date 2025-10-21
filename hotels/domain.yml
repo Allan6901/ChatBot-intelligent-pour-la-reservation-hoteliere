@@ -62,3 +62,4 @@ actions:
   - action_demander_ville
   - action_rechercher_par_prix
   - action_rechercher_par_capacite
+  - action_detecter_capacite_fallback

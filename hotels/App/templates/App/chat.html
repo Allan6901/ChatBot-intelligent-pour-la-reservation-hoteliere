@@ -1,60 +1,221 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Chat avec Rasa</title>
-    <style>
-        #chat-box {
-            border: 1px solid #ccc;
-            padding: 10px;
-            width: 400px;
-            height: 300px;
-            overflow-y: scroll;
-            margin-bottom: 10px;
-        }
-        #message-input {
-            width: 400px;
-            padding: 5px;
-        }
-        .user-msg { color: blue; }
-        .bot-msg { color: green; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HotelEase AI - Assistant Réservations</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e2e8f0;
+      font-family: 'Inter', sans-serif;
+    }
+    .chat-container {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.4);
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .bot-msg {
+      background: rgba(255,255,255,0.1);
+      color: #f8fafc;
+      padding: 12px 16px;
+      border-radius: 18px;
+      max-width: 80%;
+      margin-bottom: 12px;
+      margin-right: auto;
+    }
+    .user-msg {
+      background: #2563eb;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 18px;
+      max-width: 80%;
+      margin-bottom: 12px;
+      margin-left: auto;
+      text-align: right;
+    }
+    .typing::after {
+      content: '⠿';
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+    #chat-box {
+      height: 400px;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .message-input-container {
+      background: rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 16px 20px;
+    }
+    .input-field {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      padding: 12px 20px;
+      color: white;
+      width: 100%;
+      font-size: 14px;
+    }
+    .input-field::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    .input-field:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    }
+    .send-button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 24px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 12px;
+      width: 100%;
+    }
+    .send-button:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+    .send-button:active {
+      transform: translateY(0);
+    }
+  </style>
 </head>
-<body>
-    <h2>Chat avec Rasa</h2>
-    <div id="chat-box"></div>
-    <input type="text" id="message-input" placeholder="Tapez votre message et appuyez sur Entrée">
 
-    <script>
-        const chatBox = document.getElementById('chat-box');
-        const input = document.getElementById('message-input');
+<body class="flex flex-col items-center justify-center min-h-screen p-4">
 
-        input.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const message = input.value.trim();
-                if (!message) return;
+  <div class="text-center mb-6">
+    <div class="text-5xl mb-2">🤖</div>
+    <h1 class="text-3xl font-bold text-white">Hotel AI Assistant</h1>
+    <p class="text-gray-400 mt-2">Discutez avec notre assistant pour trouver le meilleur hôtel selon vos envies ✈️</p>
+  </div>
 
-                chatBox.innerHTML += `<div class="user-msg"><strong>Vous:</strong> ${message}</div>`;
-                input.value = '';
+  <!-- Fenêtre du chatbot -->
+  <div class="chat-container w-full max-w-xl">
+    <div id="chat-box" class="flex-1 overflow-y-auto">
+      <div class="bot-msg">
+        Bonjour ! Je suis <strong>Hotel AI</strong>, votre assistant de réservation.
+        Vous pouvez me demander par exemple :
+        <ul class="list-disc list-inside text-sm mt-2 space-y-1">
+          <li>« Quels sont les hôtels à Paris ? »</li>
+          <li>« Montre-moi les hôtels à moins de 120€ »</li>
+          <li>« Quels hôtels 4 étoiles as-tu ? »</li>
+          <li>« Hôtel pour 2 personnes »</li>
+        </ul>
+      </div>
+    </div>
 
-                fetch('/chat/', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams({ 'message': message })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.responses) {
-                        data.responses.forEach(msg => {
-                            chatBox.innerHTML += `<div class="bot-msg"><strong>Bot:</strong> ${msg}</div>`;
-                        });
-                    } else if (data.error) {
-                        chatBox.innerHTML += `<div class="bot-msg"><strong>Erreur:</strong> ${data.error}</div>`;
-                    }
-                    chatBox.scrollTop = chatBox.scrollHeight;
-                });
-            }
+    <!-- Champ de saisie -->
+    <div class="message-input-container">
+      <input type="text" id="message" placeholder="Écrivez votre message ici..." class="input-field">
+      <button onclick="sendMessage()" class="send-button">
+        Envoyer le message
+      </button>
+    </div>
+  </div>
+
+  <footer class="text-gray-500 text-sm mt-6">© 2025 HotelEase AI • Prototype Front-End</footer>
+
+  <script>
+    const chatBox = document.getElementById('chat-box');
+
+    function addMessage(text, sender = 'bot') {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = sender === 'user' ? 'user-msg' : 'bot-msg';
+      messageDiv.textContent = text;
+      chatBox.appendChild(messageDiv);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function addTyping() {
+      const typingDiv = document.createElement('div');
+      typingDiv.className = 'bot-msg typing';
+      typingDiv.textContent = "HotelEase réfléchit";
+      chatBox.appendChild(typingDiv);
+      chatBox.scrollTop = chatBox.scrollHeight;
+      return typingDiv;
+    }
+
+    async function sendMessage() {
+      const messageInput = document.getElementById("message");
+      const message = messageInput.value.trim();
+
+      if (!message) return;
+
+      // Ajouter le message de l'utilisateur
+      addMessage(message, 'user');
+      messageInput.value = '';
+
+      // Afficher l'indicateur de frappe
+      const typingIndicator = addTyping();
+
+      try {
+        const formData = new FormData();
+        formData.append("message", message);
+
+        const response = await fetch("/chat/", {
+          method: "POST",
+          body: formData
         });
-    </script>
+
+        const data = await response.json();
+
+        // Supprimer l'indicateur de frappe
+        typingIndicator.remove();
+
+        // Afficher la réponse du bot
+        if (data.responses) {
+          data.responses.forEach(msg => {
+            addMessage(msg);
+          });
+        } else if (data.error) {
+          addMessage("Désolé, une erreur s'est produite : " + data.error);
+        } else {
+          addMessage("Désolé, je n'ai pas compris votre demande.");
+        }
+      } catch (error) {
+        typingIndicator.remove();
+        addMessage("Erreur de connexion avec le serveur.");
+        console.error('Error:', error);
+      }
+    }
+
+    // Permettre l'envoi avec la touche Entrée
+    document.getElementById('message').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+
+    // Simulation de données d'hôtel pour les démos (optionnel)
+    const hotels = [
+      { nom: "Grand Hôtel de Paris", ville: "Paris", prix: 250, etoiles: 5 },
+      { nom: "Hôtel Le Rivage", ville: "Nice", prix: 120, etoiles: 4 },
+      { nom: "MontBlanc Suites", ville: "Chamonix", prix: 180, etoiles: 4 },
+      { nom: "Hôtel Budget Éco", ville: "Paris", prix: 95, etoiles: 3 },
+      { nom: "Azur Palace", ville: "Marseille", prix: 110, etoiles: 4 },
+      { nom: "Le Relax", ville: "Lyon", prix: 100, etoiles: 3 },
+    ];
+  </script>
+
 </body>
 </html>
